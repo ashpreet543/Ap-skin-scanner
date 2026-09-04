@@ -1,5 +1,6 @@
 import streamlit as st
-st.markdown('<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo2OoiPzl--mUgds" />', unsafe_allow_html=True)
+meta = """<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo2OoiPzl--mUgds" />"""
+st.markdown(meta, unsafe_allow_html=True)
 from PIL import Image
 
 st.set_page_config(page_title="HP Skin Scanner")
