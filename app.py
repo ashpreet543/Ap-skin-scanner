@@ -2,30 +2,32 @@ import streamlit as st
 meta = """<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo2OoiPzl--mUgds" />"""
 st.markdown(meta, unsafe_allow_html=True)
 from PIL import Image
-st.set_page_config(page_title="HP Skin Scanner")
-st.title("HP Skin Scanner - Dadi Maa + Meesho")
+
+st.set_page_config(page_title="HP Skin Scanner", layout="centered")
+
+st.title("HP Skin Scanner - Dadi Maa Nuskha")
 
 tab1, tab2 = st.tabs(["📁 Gallery", "📷 Camera"])
 
 def show_result():
-    st.success("Skin Analysis: Dry Skin / Acne Detected")
+    st.success("Skin Analysis: Dry Skin Detected")
     st.subheader("👵 Dadi Maa Nuskha")
-    st.write("Haldi + Dahi 10 min lagao, roz paani zyada pio")
-    
-    st.subheader("🛒 Meesho Product Suggestion")
-    st.write("**Himalaya Neem Face Wash - ₹199**")
-    st.link_button("Meesho Te Vekho", "https://www.meesho.com/search?q=neem%20face%20wash")
-    
-    st.write("**Plum Moisturizer for Dry Skin - ₹299**")
-    st.link_button("Meesho Te Vekho", "https://www.meesho.com/search?q=moisturizer%20dry%20skin")
+    st.write("Haldi + Dahi 10 min laga ke dho lo")
+    st.subheader("🛒 Meesho Product Suggestions")
+    st.write("**Himalaya Neem Face Wash** - Best for dry skin")
 
 with tab1:
-    file = st.file_uploader("Photo upload karo")
-    if file:
-        st.image(file)
-        show_result()
+    uploaded = st.file_uploader("Upload skin photo", type=["jpg","png","jpeg"])
+    if uploaded:
+        img = Image.open(uploaded)
+        st.image(img, caption="Uploaded Image")
+        if st.button("Analyze"):
+            show_result()
 
 with tab2:
-    pic = st.camera_input("Camera")
-    if pic:
-        show_result()
+    cam = st.camera_input("Take a photo")
+    if cam:
+        img = Image.open(cam)
+        st.image(img)
+        if st.button("Analyze Camera", key="cam_analyze"):
+            show_result()
