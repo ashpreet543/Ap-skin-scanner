@@ -1,5 +1,5 @@
 import streamlit as st
-meta = "<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo2OoiPzl--mUgds" />"""
+meta = '<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo2OoiPzl--mUgds" />"""
 st.markdown(meta, unsafe_allow_html=True)
 from PIL import Image
 
