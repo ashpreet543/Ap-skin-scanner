@@ -3,28 +3,22 @@ st.markdown('<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcny
 from PIL import Image
 st.set_page_config(page_title="HP Skin Scanner", layout="wide")
 st.title("HP Skin Scanner - Dadi Maa Nuskha")
-
-tab1, tab2 = st.tabs(["📁 Gallery", "📷 Camera"])
-
+tab1, tab2 = st.tabs(["Gallery", "Camera"])
 def show_result():
     st.success("Skin Analysis: Dry Skin Detected")
-    st.subheader("👵 Dadi Maa Nuskha")
-    st.write("Haldi + Dahi 10 min laga ke dho lo")
-    st.subheader("🛒 Meesho Product Suggestions")
-    st.write("**Himalaya Neem Face Wash** - Best for dry skin")
-
+    st.subheader("Dadi Maa Nuskha")
+    st.write("Haldi + Dahi 10 min lagao")
+    st.subheader("Meesho Product Suggestion")
+    st.write("Himalaya Neem Face Wash")
 with tab1:
-    uploaded = st.file_uploader("Upload skin photo", type=["jpg","png","jpeg"])
+    uploaded = st.file_uploader("Upload Skin Photo")
     if uploaded:
         img = Image.open(uploaded)
-        st.image(img, caption="Uploaded Image")
-        if st.button("Analyze"):
-            show_result()
-
+        st.image(img)
+        show_result()
 with tab2:
-    cam = st.camera_input("Take a photo")
+    cam = st.camera_input("Camera")
     if cam:
         img = Image.open(cam)
         st.image(img)
-        if st.button("Analyze Camera", key="cam_analyze"):
-            show_result()
+        show_result()
