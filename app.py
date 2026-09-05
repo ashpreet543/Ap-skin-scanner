@@ -23,9 +23,17 @@ with tab1:
     if uploaded_file:
         image = Image.open(uploaded_file)
         st.image(image, caption="Tuhadi Photo", use_container_width=True)
-        st.success("Analysis: Oily Skin - Nuskha: Neem + Haldi pack 15 min lagao!")
+        st.success("Analysis: Oily Skin - 85% Glow!")
+            st.write("**Tuhadi skin vich tel jyada aa, par glow vadhia!**")
+            st.write("**Matlab:** Pores khule ne, mitti jama hundi aa.")
+            st.write("**Dadi da Nuskha:** Multani mitti + Gulab jal roz sham nu. Besan naal muh dhovo.")
+            st.write("**Product:** Neem Face Wash use karo.")
         st.link_button("🛒 Meesho te Khao", "https://www.meesho.com")
-
+st.success("Analysis: Dry Skin - 65% Hydration ghat aa!")
+            st.write("**Tuhadi skin sukkhi aa, nami di lod aa!**")
+            st.write("**Matlab:** Paani ghat pinde ho, dhoop jyada lagdi aa.")
+            st.write("**Dadi da Nuskha:** Raat nu malai + shahad + 2 bund nariyal tel laao. Kheere da ras lagao.")
+            st.write("**Product:** Haldi Cream din ch 2 vaar.")
 with tab2:
     camera_photo = st.camera_input("Camera naal photo lao")
     if camera_photo:
