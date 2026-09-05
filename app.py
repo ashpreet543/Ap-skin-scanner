@@ -1,4 +1,19 @@
 import streamlit as st
+
+# --- 1. GOOGLE VERIFICATION ---
+st.markdown('<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo20oiPzl--mUgds" />', unsafe_allow_html=True)
+
+# --- 2. BLACK THEME ---
+st.markdown("""
+<style>
+    .stApp {
+        background-color: #000000;
+    }
+    h1, h2, h3, p, label {
+        color: white !important;
+    }
+</style>
+""", unsafe_allow_html=True)import streamlit as st
 from PIL import Image
 st.set_page_config(page_title="HP Skin Scanner", layout="wide")
 st.html('<meta name="google-site-verification" content="jSn7w9k8ZJtsvbuiBcnyShRAADZgo20oiPzl--mUgds" />')
