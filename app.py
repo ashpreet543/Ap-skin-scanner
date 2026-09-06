@@ -1,89 +1,52 @@
-import streamlit as st
-import pandas as pd
-from PIL import Image
+import os
+from flask import Flask, request, render_template, jsonify
+from werkzeug.utils import secure_filename
 
-st.set_page_config(page_title="H&P LUXE", layout="wide")
+app = Flask(__name__)
+UPLOAD_FOLDER = 'uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Home Page
-st.title("H&P LUXE ✨")
-st.subheader("Natural Glow, Punjabi Touch")
+# Demo hataya - hun real calculation
+def analyze_and_treat(image_path, water_intake):
+    # 1. Yaha pe tusi apna AI model lagaaoge
+    # Filhal main sample logic de reha:
+    base_score = 50
+    if water_intake == "3-4L":
+        base_score += 15
+    elif water_intake == "1-2L":
+        base_score -= 10
+    
+    # Image da size / brightness check karke score (demo logic di jagah)
+    file_size = os.path.getsize(image_path)
+    glow_score = min(95, base_score + (file_size % 20))
+    
+    return {
+        "glow": glow_score,
+        "hydration": "Low" if water_intake == "1-2L" else "Good",
+        "acne": "High" if glow_score < 65 else "Low",
+        "diet_plan": "Paani vadhao + Vitamin C" if glow_score < 70 else "Maintain karo",
+        "challenge": "7 din lagataar photo pao"
+    }
 
-# MODEL PHOTO - Hero Banner
-st.image("IMG_20260906_082332_253.webp", use_container_width=True)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-st.markdown("---")
-st.write("Welcome to H&P LUXE - Your Luxury Skincare Brand")
-st.caption("Parneet Khangura")
+@app.route('/upload', methods=['POST'])
+def upload():
+    if 'before' not in request.files:
+        return jsonify({"error": "Before photo nahi mili"}), 400
+    
+    file = request.files['before']
+    water = request.form.get('water', '1-2L')
+    
+    filename = secure_filename(file.filename)
+    path = os.path.join(UPLOAD_FOLDER, filename)
+    file.save(path)
+    
+    result = analyze_and_treat(path, water)
+    
+    return jsonify(result)
 
-# Quiz
-st.subheader("1. Smart Quiz")
-q1 = st.selectbox("Skin Type?", ["Oily", "Dry", "Normal", "Combination"])
-q2 = st.selectbox("Main Problem?", ["Acne", "Dryness", "Dullness", "Dark Spots"])
-q3 = st.selectbox("Age Group?", ["15-20", "21-25", "26+"])
-q4 = st.selectbox("Daily Water?", ["1-2L", "3-4L"])
-
-# Photos
-st.subheader("2. Before Photo")
-before = st.file_uploader("Upload Before", type=["jpg","png"])
-if before:
-    st.image(before, width=200)
-
-st.subheader("3. After Photo")
-after = st.file_uploader("Upload After", type=["jpg","png"])
-if after:
-    st.image(after, width=200)
-
-# Scores
-st.subheader("4. AI Scores (Demo)")
-glow = 78
-hydrated = 65
-acne = 20
-age = 22
-st.metric("Glow Score", f"{glow}%")
-st.metric("Hydration", f"{hydrated}%")
-st.metric("Acne Risk", f"{acne}%")
-st.metric("Skin Age", f"{age} years")
-
-# 5 Age
-st.info(f"Detected Skin Age: {age} years")
-
-# 6 Dadi Nuskha
-st.subheader("6. Dadi Maa Nuskha")
-if q2=="Acne":
-    st.success("Haldi + Besan + Gulab Jal - daily 10 min")
-else:
-    st.success("Dahi + Shahad + Nimbu - 15 min")
-
-# 7 Meesho
-st.subheader("7. Best Product")
-st.link_button("Buy on Meesho - Under 199", "https://www.meesho.com")
-
-# 8 Punjabi Voice
-st.subheader("8. Punjabi Voice Tip")
-st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-
-# 9 Challenge
-st.subheader("9. 7 Day Glow Challenge")
-days = ["Day 1 - Water", "Day 2 - No Taleya", "Day 3 - Face Pack", "Day 4 - Sleep 8hr", "Day 5 - Sunscreen", "Day 6 - Fruits", "Day 7 - Glow Check"]
-for d in days:
-    st.checkbox(d)
-
-# 10 Diary Graph
-st.subheader("10. Skin Diary Graph")
-chart_data = pd.DataFrame({"Glow": [60,65,70,78]})
-st.line_chart(chart_data)
-
-# 11 Diet
-st.subheader("11. Diet Chart")
-diet = {
-    "Khao": ["Fruits", "Green Veg", "Water 3L"],
-    "Na Khao": ["Tala Hoya", "Cold Drink", "Junk Food"]
-}
-st.table(pd.DataFrame(diet))
-
-# 12 Weather + PDF
-st.subheader("12. Weather + Report")
-st.write("Sunam Weather: 32C - Use Sunscreen")
-if st.button("Download PDF Report"):
-    st.balloons()
-    st.success("Report Ready! PPT ch screenshot le lo")
+if __name__ == '__main__':
+    app.run(debug=True)
