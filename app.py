@@ -3,7 +3,22 @@ import pandas as pd
 from PIL import Image
 
 st.set_page_config(page_title="H&P LUXE", page_icon="✨", layout="centered")
-st.title("✨ H&P LUXE - AI Skin Scanner")
+st.title("✨ H&import streamlit as st
+from PIL import Image
+
+# Home Page
+st.set_page_config(page_title="H&P LUXE", layout="wide")
+
+st.title("H&P LUXE ✨")
+st.subheader("Natural Glow, Punjabi Touch")
+
+# MODEL PHOTO - Hero Banner
+st.image("model.jpg", use_container_width=True, caption="H&P LUXE Muse - Evleen Style 🧡")
+
+st.markdown("---")
+st.write("Welcome to H&P LUXE - Your Luxury Skincare Brand")
+
+# Tere baaki products da code ethe ayuP LUXE - AI Skin Scanner")
 st.caption("Parneet Khangura")
 
 # Quiz
