@@ -4,7 +4,7 @@ from PIL import Image
 
 st.set_page_config(page_title="H&P LUXE", page_icon="✨", layout="centered")
 st.title("✨ H&P LUXE - AI Skin Scanner")
-st.caption("Sunam di Dhi da Brand | Made by Ashpreet Kaur")
+st.caption("Parneet Khangura")
 
 # Quiz
 st.subheader("1. Smart Quiz")
