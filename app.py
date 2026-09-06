@@ -2,13 +2,9 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-st.set_page_config(page_title="H&P LUXE", page_icon="✨", layout="centered")
-st.title("✨ H&import streamlit as st
-from PIL import Image
-
-# Home Page
 st.set_page_config(page_title="H&P LUXE", layout="wide")
 
+# Home Page
 st.title("H&P LUXE ✨")
 st.subheader("Natural Glow, Punjabi Touch")
 
@@ -17,14 +13,12 @@ st.image("model.jpg", use_container_width=True, caption="H&P LUXE Muse - Evleen 
 
 st.markdown("---")
 st.write("Welcome to H&P LUXE - Your Luxury Skincare Brand")
-
-# Tere baaki products da code ethe ayuP LUXE - AI Skin Scanner")
 st.caption("Parneet Khangura")
 
 # Quiz
 st.subheader("1. Smart Quiz")
-q1 = st.selectbox("Skin Type?", ["Oily", "Dry", "Combination"])
-q2 = st.selectbox("Main Problem?", ["Acne", "Dark Spots", "Dullness"])
+q1 = st.selectbox("Skin Type?", ["Oily", "Dry", "Normal", "Combination"])
+q2 = st.selectbox("Main Problem?", ["Acne", "Dryness", "Dullness", "Dark Spots"])
 q3 = st.selectbox("Age Group?", ["15-20", "21-25", "26+"])
 q4 = st.selectbox("Daily Water?", ["1-2L", "3-4L"])
 
