@@ -9,7 +9,7 @@ st.title("H&P LUXE ✨")
 st.subheader("Natural Glow, Punjabi Touch")
 
 # MODEL PHOTO - Hero Banner
-st.image("model.jpg", use_container_width=True, caption="H&P LUXE Muse - Evleen Style 🧡")
+st.image("IMG_20260906_082332_253.webp", use_container_width=True)
 
 st.markdown("---")
 st.write("Welcome to H&P LUXE - Your Luxury Skincare Brand")
