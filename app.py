@@ -38,7 +38,7 @@ if st.button("✨ ਮੇਰਾ ਨਤੀਜਾ ਵੇਖੋ", use_container_widt
         st.stop()
 
     img = Image.open(uploaded).convert("RGB")
-    st.image(img, use_column_width=True)
+    st.image(img, use_container_width=True)
 
     # Scan
     arr = np.array(img.resize((100,100)))
