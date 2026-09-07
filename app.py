@@ -6,7 +6,7 @@ import pandas as pd
 st.set_page_config(page_title="H&P LUXE", page_icon="✨", layout="centered")
 
 st.markdown("<h1 style='text-align:center; color:#B76E79;'>H&P LUXE ✨</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align:center;'>ਸਕਿਨ ਸਕੈਨਰ - ਸੁਨਾਮ</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align:center;'>ਸਕਿਨ ਸਕੈਨਰ - Rajgarh</h3>", unsafe_allow_html=True)
 st.divider()
 
 st.subheader("📝 ਪਹਿਲਾ ਪੜਾਅ: 4 ਸਵਾਲ")
@@ -140,4 +140,4 @@ if st.button("✨ ਮੇਰਾ ਨਤੀਜਾ ਵੇਖੋ", use_container_widt
 
     st.info(f"🔊 ਬੋਲ ਕੇ ਸੁਣੋ: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ! ਤੁਹਾਡੀ ਸਕਿਨ {detected} ਏ। ਨੂਰ {glow}% ਏ, ਤਰਾਵਟ {taravat}% ਏ। {prod} ਵਰਤੋ ਤੇ 7 ਦਿਨ ਚਮਕੋ!'")
 
-st.caption("ਬਣਾਇਆ: ਅਸ਼ਪ੍ਰੀਤ ਕੌਰ | ਸੁਨਾਮ | H&P LUXE")
+st.caption("ਬਣਾਇਆ: Ashpreet | Rajgarh,Patiala| H&P LUXE")
