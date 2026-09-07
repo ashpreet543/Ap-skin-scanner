@@ -133,10 +133,10 @@ if st.button("✨ ਮੇਰਾ ਨਤੀਜਾ ਵੇਖੋ", use_container_widt
     col1, col2 = st.columns(2)
     with col1:
         b = st.file_uploader("ਪਹਿਲਾਂ ਵਾਲੀ ਫੋਟੋ", key="before")
-        if b: st.image(Image.open(b), caption="ਪਹਿਲਾਂ")
+        if b: st.image(Image.open(b), use_container_width=True)
     with col2:
         a = st.file_uploader("7 ਦਿਨਾਂ ਬਾਅਦ ਵਾਲੀ ਫੋਟੋ", key="after")
-        if a: st.image(Image.open(a), caption="ਬਾਅਦ ਚ")
+        if a: st.image(Image.open(a), use_container_width=True)
 
     st.info(f"🔊 ਬੋਲ ਕੇ ਸੁਣੋ: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ! ਤੁਹਾਡੀ ਸਕਿਨ {detected} ਏ। ਨੂਰ {glow}% ਏ, ਤਰਾਵਟ {taravat}% ਏ। {prod} ਵਰਤੋ ਤੇ 7 ਦਿਨ ਚਮਕੋ!'")
 
